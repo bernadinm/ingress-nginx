@@ -447,7 +447,6 @@ WITH_FLAGS="--with-debug \
   --with-pcre-jit \
   --with-http_ssl_module \
   --with-http_stub_status_module \
-  --with-http_realip_module \
   --with-http_auth_request_module \
   --with-http_addition_module \
   --with-http_dav_module \
