@@ -470,6 +470,26 @@ type Configuration struct {
 	// Sets whether to use incoming X-Forwarded headers.
 	UseForwardedHeaders bool `json:"use-forwarded-headers"`
 
+	// Sets whether to use incoming X-Forwarded-For headers.
+	// Default: true
+	EnableForwardedForHeaders bool `json:"enable-forwarded-for-headers"`
+
+	// Sets whether to use incoming X-Forwarded-Host headers.
+	// Default: true
+	EnableForwardedHostHeaders bool `json:"enable-forwarded-host-headers"`
+
+	// Sets whether to use incoming X-Forwarded-Proto headers.
+	// Default: true
+	EnableForwardedProtoHeaders bool `json:"enable-forwarded-proto-headers"`
+
+	// Sets whether to use incoming X-Forwarded-Port headers.
+	// Default: true
+	EnableForwardedPortHeaders bool `json:"enable-forwarded-port-headers"`
+
+	// Sets whether to use incoming X-Real-IP headers.
+	// Default: true
+	EnableRealIPHeaders bool `json:"enable-real-ip-headers"`
+
 	// Sets the header field for identifying the originating IP address of a client
 	// Default is X-Forwarded-For
 	ForwardedForHeader string `json:"forwarded-for-header,omitempty"`
@@ -699,6 +719,11 @@ func NewDefault() Configuration {
 		ErrorLogLevel:                    errorLevel,
 		UseForwardedHeaders:              false,
 		ForwardedForHeader:               "X-Forwarded-For",
+		EnableForwardedForHeaders:        true,
+		EnableForwardedHostHeaders:       true,
+		EnableForwardedProtoHeaders:      true,
+		EnableForwardedPortHeaders:       true,
+		EnableRealIPHeaders:              true,
 		ComputeFullForwardedFor:          false,
 		ProxyAddOriginalURIHeader:        false,
 		GenerateRequestID:                true,

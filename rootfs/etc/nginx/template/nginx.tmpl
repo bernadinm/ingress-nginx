@@ -1172,16 +1172,30 @@ stream {
             {{ end }}
 
             {{ $proxySetHeader }} X-Request-ID           $req_id;
+            {{ if $all.Cfg.EnableRealIPHeaders }}
             {{ $proxySetHeader }} X-Real-IP              $remote_addr;
+            {{ end }}
             {{ if and $all.Cfg.UseForwardedHeaders $all.Cfg.ComputeFullForwardedFor }}
+            {{ if $all.Cfg.EnableForwardedForHeaders }}
             {{ $proxySetHeader }} X-Forwarded-For        $full_x_forwarded_for;
+            {{ end }}
+            {{ if $all.Cfg.EnableForwardedProtoHeaders }}
             {{ $proxySetHeader }} X-Forwarded-Proto      $full_x_forwarded_proto;
+            {{ end }}
             {{ else }}
+            {{ if $all.Cfg.EnableForwardedForHeaders }}
             {{ $proxySetHeader }} X-Forwarded-For        $remote_addr;
             {{ end }}
+            {{ end }}
+            {{ if $all.Cfg.EnableForwardedHostHeaders }}
             {{ $proxySetHeader }} X-Forwarded-Host       $best_http_host;
+            {{ end }}
+            {{ if $all.Cfg.EnableForwardedPortHeaders }}
             {{ $proxySetHeader }} X-Forwarded-Port       $pass_port;
+            {{ end }}
+            {{ if $all.Cfg.EnableForwardedProtoHeaders }}
             {{ $proxySetHeader }} X-Forwarded-Proto      $pass_access_scheme;
+            {{ end }}
             {{ if $all.Cfg.ProxyAddOriginalURIHeader }}
             {{ $proxySetHeader }} X-Original-URI         $request_uri;
             {{ end }}

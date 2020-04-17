@@ -114,6 +114,11 @@ The following table shows a configuration option's name, type, and the default v
 |[bind-address](#bind-address)|[]string|""|
 |[use-forwarded-headers](#use-forwarded-headers)|bool|"false"|
 |[forwarded-for-header](#forwarded-for-header)|string|"X-Forwarded-For"|
+|[enable-forwarded-for-headers](#enable-forwarded-for-headers)|bool|"true"|
+|[enable-forwarded-host-headers](#enable-forwarded-host-headers)|bool|"true"|
+|[enable-forwarded-proto-headers](#enable-forwarded-proto-headers)|bool|"true"|
+|[enable-forwarded-port-headers](#enable-forwarded-port-headers)|bool|"true"|
+|[enable-real-ip-headers](#enable-real-ip-headers)|bool|"true"|
 |[compute-full-forwarded-for](#compute-full-forwarded-for)|bool|"false"|
 |[proxy-add-original-uri-header](#proxy-add-original-uri-header)|bool|"false"|
 |[generate-request-id](#generate-request-id)|bool|"true"|
@@ -727,6 +732,26 @@ If false, NGINX ignores incoming `X-Forwarded-*` headers, filling them with the 
 ## forwarded-for-header
 
 Sets the header field for identifying the originating IP address of a client. _**default:**_ X-Forwarded-For
+
+## enable-forwarded-for-headers
+
+Sets whether to use incoming X-Forwarded-For headers. _**default:**_ true
+
+## enable-forwarded-host-headers
+
+Sets whether to use incoming X-Forwarded-Host headers. _**default:**_ true
+
+## enable-forwarded-proto-headers
+
+Sets whether to use incoming X-Forwarded-Proto headers. _**default:**_ true
+
+## enable-forwarded-port-headers
+
+Sets whether to use incoming X-Forwarded-Port headers. _**default:**_ true
+
+## enable-real-ip-headers
+
+Sets whether to use incoming X-Real-IP headers_**default:**_ true
 
 ## compute-full-forwarded-for
 
